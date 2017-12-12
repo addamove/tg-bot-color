@@ -8,10 +8,6 @@ let state = {
   again: false
 };
 
-let askQuestion = questions => {
-  questions.map(question => {});
-};
-
 let questions = [
   {
     title: "Кошки, цветы, аппельсины, конфеты?",
@@ -54,10 +50,6 @@ let questions = [
     ]
   }
 ];
-
-function getQuestion() {
-  return questions[Math.floor(Math.random() * questions.length)];
-}
 
 function newQuestion(msg) {
   let arr = questions[state.i];
