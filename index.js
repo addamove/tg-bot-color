@@ -102,13 +102,11 @@ function answered(msg) {
       break;
 
     default:
+      url =
+        "http://vyantex.ru/d/773069/d/%D0%A2%D0%B5%D0%BC%D0%BD.%D0%A1%D0%B8%D0%BD%D0%B8%D0%B9.jpg";
+      colour = "тёмно синий";
   }
-  if (state.color >= 10) {
-    swt = 500;
-    url =
-      "http://vyantex.ru/d/773069/d/%D0%A2%D0%B5%D0%BC%D0%BD.%D0%A1%D0%B8%D0%BD%D0%B8%D0%B9.jpg";
-    colour = "тёмно синий";
-  }
+
   bot.sendPhoto(msg.from.id, url);
   bot.sendMessage(msg.from.id, "Ваш оттенок синего определённо " + colour);
   state.color = 0;
