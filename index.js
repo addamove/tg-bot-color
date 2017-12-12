@@ -65,7 +65,6 @@ function newQuestion(msg) {
 }
 
 function answered(msg) {
-  let swt = 0;
   let url;
   let colour;
 
