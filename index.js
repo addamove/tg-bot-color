@@ -45,6 +45,29 @@ anwser = color => {
   return url;
 };
 
+bot.onText(/^\/selectseries/, function(msg, match) {
+  var seriesKB = [["Yes"], ["No"]]; // The keyboard array
+  bot.sendMessage(msg.chat.id, "Select a serie", {
+    reply_markup: {
+      keyboard: seriesKB,
+      one_time_keyboard: true
+    }
+  });
+  bot.onText(/.+/g, function(msg, match) {
+    bot.sendMessage(msg.chat.id, "You selected " + match);
+    var selectedSerie = msg.query;
+  });
+});
+
+bot.onText(/\/start/, (msg, match) => {
+  bot.sendMessage(
+    msg.chat.id,
+    "- привет, хочешь узнать, какой цвет - твой? Если готов, то напиши ок"
+  );
+  bot.onText(/\ок/i, (msg, match) => {
+    started(msg, match);
+  });
+});
 let flowers = (msg, match, color) => {
   bot.sendMessage(msg.chat.id, "Любите цветы? [люблю / не люблю]");
 
@@ -214,27 +237,3 @@ let started = (msg, match) => {
   });
   return;
 };
-
-bot.onText(/^\/selectseries/, function(msg, match) {
-  var seriesKB = [["Yes"], ["No"]]; // The keyboard array
-  bot.sendMessage(msg.chat.id, "Select a serie", {
-    reply_markup: {
-      keyboard: seriesKB,
-      one_time_keyboard: true
-    }
-  });
-  bot.onText(/.+/g, function(msg, match) {
-    bot.sendMessage(msg.chat.id, "You selected " + match);
-    var selectedSerie = msg.query;
-  });
-});
-
-bot.onText(/\/start/, (msg, match) => {
-  bot.sendMessage(
-    msg.chat.id,
-    "- привет, хочешь узнать, какой цвет - твой? Если готов, то напиши ок"
-  );
-  bot.onText(/\ок/i, (msg, match) => {
-    started(msg, match);
-  });
-});
