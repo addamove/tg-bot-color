@@ -1,6 +1,6 @@
-var TelegramBot = require("node-telegram-bot-api");
-var token = "390609420:AAGgOQfAmlP8sP9HrrVmpitIwyocvCUgQwU";
-var bot = new TelegramBot(token, { polling: true });
+let TelegramBot = require("node-telegram-bot-api");
+let token = "390609420:AAGgOQfAmlP8sP9HrrVmpitIwyocvCUgQwU";
+let bot = new TelegramBot(token, { polling: true });
 
 let state = {
   color: 0,
@@ -12,7 +12,7 @@ let askQuestion = questions => {
   questions.map(question => {});
 };
 
-var questions = [
+let questions = [
   {
     title: "Кошки, цветы, аппельсины, конфеты?",
     buttons: [
@@ -60,9 +60,9 @@ function getQuestion() {
 }
 
 function newQuestion(msg) {
-  var arr = questions[state.i];
-  var text = arr.title;
-  var options = {
+  let arr = questions[state.i];
+  let text = arr.title;
+  let options = {
     reply_markup: JSON.stringify({
       inline_keyboard: arr.buttons
     })
